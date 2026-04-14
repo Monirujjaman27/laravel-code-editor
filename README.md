@@ -26,14 +26,18 @@ composer require monirujjaman27/laravel-code-editor
 
 
 # Publish config
+```bash
 php artisan vendor:publish --tag=code-editor-config
 
 # Publish views (optional)
+```bash
 php artisan vendor:publish --tag=code-editor-views
 
 # Clear cache
+```bash
 php artisan optimize:clear
 
 # Test the editor
+```bash
 php artisan serve
 # Visit: http://localhost:8000/code-editor
