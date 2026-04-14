@@ -1,0 +1,65 @@
+{
+    "name": "Monirujjaman27/laravel-code-editor",
+    "description": "A powerful code editor with Monaco editor, terminal, and file tree for Laravel",
+    "type": "laravel-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Md Munirujjaman",
+            "email": "munirujjaman@mcqselftest.com",
+            "homepage": "https://github.com/mcqselftest",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/http": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/routing": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/filesystem": "^8.0|^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Monirujjaman27\\LaravelCodeEditor\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Monirujjaman27\\LaravelCodeEditor\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Monirujjaman27\\LaravelCodeEditor\\FileManagerServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "keywords": [
+        "laravel",
+        "file-manager",
+        "monaco-editor",
+        "terminal",
+        "file-explorer",
+        "laravel-package",
+        "code-editor"
+    ],
+    "homepage": "https://github.com/Monirujjaman27/laravel-code-editor",
+    "support": {
+        "issues": "https://github.com/Monirujjaman27/laravel-code-editor/issues",
+        "source": "https://github.com/Monirujjaman27/laravel-code-editor"
+    }
+}
