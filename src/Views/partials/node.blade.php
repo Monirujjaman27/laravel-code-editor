@@ -5,7 +5,7 @@
         </div>
         <ul class="ml-2 hidden border-l pl-2 folder-content" style="border-color: #313244;">
             @foreach ($node['children'] as $child)
-                @include('file-manager::partials.node', ['node' => $child])
+                @include('code-editor::partials.node', ['node' => $child])
             @endforeach
         </ul>
     @else

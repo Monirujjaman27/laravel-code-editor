@@ -109,7 +109,7 @@
 
                 <ul class="divide-y" id="fileTree" style="border-color: #313244;">
                     @foreach ($tree as $item)
-                        @include('file-manager::partials.node', ['node' => $item])
+                        @include('code-editor::partials.node', ['node' => $item])
                     @endforeach
                 </ul>
             </div>

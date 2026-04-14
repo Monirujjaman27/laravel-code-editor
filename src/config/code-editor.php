@@ -21,8 +21,23 @@ return [
     |
     */
     'allowed_extensions' => [
-        'php', 'js', 'css', 'html', 'vue', 'json', 'xml', 'yaml', 'yml',
-        'txt', 'md', 'env', 'ini', 'blade.php', 'sql', 'sh', 'bash'
+        'php',
+        'js',
+        'css',
+        'html',
+        'vue',
+        'json',
+        'xml',
+        'yaml',
+        'yml',
+        'txt',
+        'md',
+        'env',
+        'ini',
+        'blade.php',
+        'sql',
+        'sh',
+        'bash'
     ],
 
     /*
@@ -62,7 +77,7 @@ return [
     | The prefix for all file manager routes.
     |
     */
-    'route_prefix' => 'file-manager',
+    'route_prefix' => 'code-editor',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,6 +99,11 @@ return [
     |
     */
     'allowed_commands' => [
-        'ls', 'pwd', 'whoami', 'php artisan', 'composer', 'git status'
+        'ls',
+        'pwd',
+        'whoami',
+        'php artisan',
+        'composer',
+        'git status'
     ],
 ];
