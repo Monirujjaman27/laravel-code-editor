@@ -1,6 +1,6 @@
 <?php
 
-namespace monirujjaman27\LaravelCodeEditor;
+namespace Monirujjaman27\LaravelCodeEditor;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
@@ -14,32 +14,31 @@ class FileManagerServiceProvider extends ServiceProvider
     {
         // Merge config
         $this->mergeConfigFrom(
-            __DIR__ . '/config/filemanager.php', 'filemanager'
+            __DIR__ . '/config/code-editor.php', 'code-editor'
         );
-
-        // Register views
-        $this->loadViewsFrom(__DIR__.'/Views', 'code-editor');
     }
 
     /**
      * Bootstrap services.
      */
-    public function boot(Router $router): void
+    public function boot(): void
     {
-        // Publish config
-        $this->publishes([
-            __DIR__ . '/config/filemanager.php' => config_path('filemanager.php'),
-        ], 'filemanager-config');
+        // Register views
+        $this->loadViewsFrom(__DIR__ . '/Views', 'code-editor');
 
-        // Publish views
-        $this->publishes([
-            __DIR__ . '/Views' => resource_path('views/vendor/file-manager'),
-        ], 'filemanager-views');
+        // Publish config
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/config/code-editor.php' => config_path('code-editor.php'),
+            ], 'code-editor-config');
+
+            // Publish views
+            $this->publishes([
+                __DIR__ . '/Views' => resource_path('views/vendor/code-editor'),
+            ], 'code-editor-views');
+        }
 
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
-
-        // Register middleware
-        $router->aliasMiddleware('filemanager.auth', \Mcqselftest\LaravelFileManager\Middleware\Authenticate::class);
     }
 }

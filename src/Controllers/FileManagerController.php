@@ -1,6 +1,6 @@
 <?php
 
-namespace monirujjaman27\LaravelCodeEditor\Controllers;
+namespace Monirujjaman27\LaravelCodeEditor\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,8 +15,8 @@ class FileManagerController extends Controller
 
     public function __construct()
     {
-        $this->basePath = config('filemanager.base_directory', base_path());
-        $this->excludedDirs = config('filemanager.excluded_directories', ['vendor', 'node_modules', '.git']);
+        $this->basePath = config('code-editor.base_directory', base_path());
+        $this->excludedDirs = config('code-editor.excluded_directories', ['vendor', 'node_modules', '.git']);
     }
 
     /**
@@ -25,7 +25,7 @@ class FileManagerController extends Controller
     public function index()
     {
         $tree = $this->buildFileTree($this->basePath);
-        return view('file-manager::index', compact('tree'));
+        return view('code-editor::index', compact('tree'));
     }
 
     /**
@@ -34,6 +34,11 @@ class FileManagerController extends Controller
     private function buildFileTree($directory, $relativePath = '')
     {
         $tree = [];
+        
+        if (!File::exists($directory)) {
+            return $tree;
+        }
+        
         $items = File::directories($directory);
         $files = File::files($directory);
 
@@ -57,13 +62,22 @@ class FileManagerController extends Controller
         }
 
         // Add files
+        $allowedExtensions = config('code-editor.allowed_extensions', ['php', 'js', 'css', 'html']);
+        
         foreach ($files as $file) {
             $fileName = $file->getFilename();
             $extension = $file->getExtension();
-            $allowedExtensions = config('filemanager.allowed_extensions', ['php', 'js', 'css', 'html']);
-
+            
             // Check if file extension is allowed
-            if (in_array($extension, $allowedExtensions) || in_array($fileName, $allowedExtensions)) {
+            $isAllowed = false;
+            foreach ($allowedExtensions as $allowedExt) {
+                if ($extension === $allowedExt || $fileName === $allowedExt) {
+                    $isAllowed = true;
+                    break;
+                }
+            }
+            
+            if ($isAllowed) {
                 $newRelativePath = $relativePath ? $relativePath . '/' . $fileName : $fileName;
                 
                 $tree[] = [
@@ -110,7 +124,7 @@ class FileManagerController extends Controller
             $content = File::get($fullPath);
             return response()->json(['content' => $content]);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Unable to read file'], 500);
+            return response()->json(['error' => 'Unable to read file: ' . $e->getMessage()], 500);
         }
     }
 
@@ -138,7 +152,7 @@ class FileManagerController extends Controller
             File::put($fullPath, $request->content);
             return response()->json(['success' => true, 'message' => 'File saved successfully']);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Unable to save file'], 500);
+            return response()->json(['success' => false, 'message' => 'Unable to save file: ' . $e->getMessage()], 500);
         }
     }
 
@@ -147,7 +161,7 @@ class FileManagerController extends Controller
      */
     public function terminal(Request $request)
     {
-        if (!config('filemanager.terminal_enabled', true)) {
+        if (!config('code-editor.terminal_enabled', true)) {
             return response()->json(['output' => 'Terminal is disabled'], 403);
         }
 
@@ -160,7 +174,7 @@ class FileManagerController extends Controller
         }
 
         $command = $request->command;
-        $allowedCommands = config('filemanager.allowed_commands', []);
+        $allowedCommands = config('code-editor.allowed_commands', []);
 
         // Check if command is allowed
         if (!empty($allowedCommands)) {
