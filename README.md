@@ -18,8 +18,12 @@ A powerful code editor with Monaco editor, terminal, and file tree for Laravel a
 
 - PHP 7.4 or higher
 - Laravel 8.0 or higher
+- Laravel Authentication setup (Laravel UI, Jetstream, Breeze, or custom)
+
 
 ## Installation
+### Step 1: Install via Composer
+
 
 ```bash
 composer require monirujjaman27/laravel-code-editor
