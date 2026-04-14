@@ -42,3 +42,9 @@ php artisan optimize:clear
 # Test the editor
 php artisan serve
 # Visit: http://localhost:8000/code-editor
+
+
+
+### Code Editor Interface
+![Code Editor Main Interface](https://raw.githubusercontent.com/Monirujjaman27/laravel-code-editor/screenshots/editor.png)
+*Main editor interface with file tree, Monaco editor, and terminal*
