@@ -1,6 +1,6 @@
 <?php
 
-namespace Monirujjaman27\LaravelCodeEditor;
+namespace monirujjaman27\LaravelCodeEditor;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;

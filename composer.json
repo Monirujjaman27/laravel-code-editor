@@ -1,5 +1,5 @@
 {
-    "name": "Monirujjaman27/laravel-code-editor",
+    "name": "monirujjaman27/laravel-code-editor",
     "description": "A powerful code editor with Monaco editor, terminal, and file tree for Laravel",
     "type": "laravel-package",
     "license": "MIT",
@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Monirujjaman27\\LaravelCodeEditor\\": "src/"
+            "monirujjaman27\\LaravelCodeEditor\\": "src/"
         },
         "files": [
             "src/helpers.php"
@@ -34,13 +34,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Monirujjaman27\\LaravelCodeEditor\\Tests\\": "tests/"
+            "monirujjaman27\\LaravelCodeEditor\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Monirujjaman27\\LaravelCodeEditor\\FileManagerServiceProvider"
+                "monirujjaman27\\LaravelCodeEditor\\FileManagerServiceProvider"
             ]
         }
     },

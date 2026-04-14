@@ -1,6 +1,6 @@
 <?php
 
-namespace Monirujjaman27\LaravelCodeEditor\Controllers;
+namespace monirujjaman27\LaravelCodeEditor\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

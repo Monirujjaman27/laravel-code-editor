@@ -22,4 +22,4 @@ A powerful code editor with Monaco editor, terminal, and file tree for Laravel a
 ## Installation
 
 ```bash
-composer require Monirujjaman27/laravel-code-editor
+composer require monirujjaman27/laravel-code-editor
