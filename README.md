@@ -23,3 +23,17 @@ A powerful code editor with Monaco editor, terminal, and file tree for Laravel a
 
 ```bash
 composer require monirujjaman27/laravel-code-editor
+
+
+# Publish config
+php artisan vendor:publish --tag=code-editor-config
+
+# Publish views (optional)
+php artisan vendor:publish --tag=code-editor-views
+
+# Clear cache
+php artisan optimize:clear
+
+# Test the editor
+php artisan serve
+# Visit: http://localhost:8000/code-editor
